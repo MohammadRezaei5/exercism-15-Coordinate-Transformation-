@@ -9,3 +9,16 @@ function translate2d(dx, dy) {
   };
 }
 // console.log(result);
+
+///---///
+
+// const doubleScale = scale2d(2, 2);
+// const result = doubleScale(6, -3);
+
+function scale2d(sx, sy) {
+  return function scale(x, y) {
+    return [x * sx, y * sy];
+  };
+}
+
+// console.log(result);
