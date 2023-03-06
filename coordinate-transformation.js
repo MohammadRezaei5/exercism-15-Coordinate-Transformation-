@@ -39,3 +39,23 @@ function composeTransform(f, g) {
     return g(res[0], res[1]);
   };
 }
+
+///---///
+
+// const tripleScale = scale2d(3, 3);
+// const memoizedScale = memoizeTransform(tripleScale);
+
+export function memoizeTransform(f) {
+  let previousX, previousY, previousResult;
+
+  return function memoised(x, y) {
+    if (previousX === x && previousY === y) {
+      return previousResult;
+    }
+    previousX = x;
+    previousY = y;
+    return (previousResult = f(x, y));
+  };
+}
+
+// console.log(memoizedScale(4, 3));
